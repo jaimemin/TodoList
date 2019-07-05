@@ -13,7 +13,7 @@
 	<header class="header_section">
 		<div class="rotated_head_title">나의 해야할 일들</div>
 		<div class="register_new_todo">
-			<a href="./todoForm.jsp">새로운 TODO 등록</a>
+			<a href="/todoForm.jsp">새로운 TODO 등록</a>
 		</div>
 	</header>
 	<section class="list_section">
