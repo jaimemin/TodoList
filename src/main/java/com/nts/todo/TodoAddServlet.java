@@ -25,11 +25,12 @@ public class TodoAddServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String name = request.getParameter("name");
 		int sequence = Integer.parseInt(request.getParameter("sequence"));
-
+		
 		TodoDto todo = new TodoDto();
 		todo.setTitle(title);
 		todo.setName(name);
 		todo.setSequence(sequence);
+		
 		TodoDao todoDao = new TodoDao();
 		int insertCount = todoDao.addTodo(todo);
 		if (insertCount > 0) {
