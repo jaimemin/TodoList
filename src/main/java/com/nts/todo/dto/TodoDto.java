@@ -1,6 +1,6 @@
 package com.nts.todo.dto;
 
-public class Todo {
+public class TodoDto {
 
 	private long id;
 	private String name;
@@ -9,7 +9,7 @@ public class Todo {
 	private String title;
 	private String type;
 
-	public Todo() {
+	public TodoDto() {
 	}
 
 	public long getId() {
