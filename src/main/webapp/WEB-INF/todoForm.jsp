@@ -9,7 +9,7 @@
 <title>Register Schedule</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="register_schedule_body">
+<body class="registerScheduleBody">
 	<header>
 		<h2>할일 등록</h2>
 	</header>
@@ -37,8 +37,8 @@
 				<input type="radio" name="priority" value="3">3순위
 			</p>
 			<div>
-				<article class="previous_page">
-					<a href="./main.jsp">&lt; 이전</a>
+				<article class="previousPage">
+					<a href="./main">&lt; 이전</a>
 				</article>
 				<article class="buttons">
 					<input type="submit" value="제출">

@@ -2,17 +2,17 @@ body {
 	margin-right: 30px;
 }
 
-.header_section {
+.headerSection {
 	position: relative;
 	width: 100%;
 	height: 100px;
 }
 
-.header_section a {
+.headerSection a {
 	text-decoration: none; /*밑줄을 없애준다.*/
 }
 
-.rotated_head_title {
+.rotatedHeadTitle {
 	position: absolute;
 	transform: rotate(330deg);
 	font-size: 20px;
@@ -20,7 +20,7 @@ body {
 	top: 40px;
 }
 
-.register_new_todo {
+.registerNewTodo {
 	float: right;
 	background: skyblue;
 	padding: 5px 20px 5px 20px;
@@ -28,7 +28,7 @@ body {
 	text-color: white;
 }
 
-.list_section {
+.listSection {
 	position: relative;
 	width: 90%;
 	float: right;
@@ -41,7 +41,7 @@ body {
 	overflow: hidden;
 }
 
-.category_title {
+.status {
 	width: 100%;
 	height: 20px;
 	font-size: 15px;
@@ -51,20 +51,20 @@ body {
 	background: #00008B;
 }
 
-.register_schedule_body {
+.registerScheduleBody {
 	width: 80%;
 	margin: auto;
 	text-align: center;
 }
 
-.previous_page {
+.previousPage {
 	float: left;
 	display: inline-block;
 	margin: 10px;
 	border: 1px solid gray;
 }
 
-.previous_page a {
+.previousPage a {
 	text-decoration: none;
 	margin: 10px;
 	line-height: 35px;

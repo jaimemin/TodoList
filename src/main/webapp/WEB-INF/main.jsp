@@ -10,22 +10,62 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<header class="header_section">
-		<div class="rotated_head_title">나의 해야할 일들</div>
-		<div class="register_new_todo">
-			<a href="/todoForm.jsp">새로운 TODO 등록</a>
+	<header class="headerSection">
+		<div class="rotatedHeadTitle">나의 해야할 일들</div>
+		<div class="registerNewTodo">
+			<a href="./todoform">새로운 TODO 등록</a>
 		</div>
 	</header>
-	<section class="list_section">
+	<section class="listSection">
 		<article class="list">
-			<div class="category_title">TODO</div>
+			<div class="status">TODO</div>
 		</article>
 		<article class="list">
-			<div class="category_title">DOING</div>
+			<div class="status">DOING</div>
 		</article>
 		<article class="list">
-			<div class="category_title">DONE</div>
+			<div class="status">DONE</div>
 		</article>
+		<c:forEach var="todo" items="${todoList }">
+			<c:if test="${todo.type == 'TODO' }">
+				<div class="todoCard" id="TODO">
+					<div class="todoTitle">${todo.title }</div>
+					<div class="todoContent">
+						<div class="todoBody">
+							등록날짜: ${todo.registeredDate }, 
+							${todo.name }, 
+							우선순위 ${todo.sequence }
+						</div>
+						<button>-&gt;</button>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${todo.type == 'DOING'}">
+				<div class="todoCard" id="DOING">
+					<div class="todoTitle">${todo.title }</div>
+					<div class="todoContent">
+						<div class="todoBody">
+							등록날짜: ${todo.registeredDate }, 
+							${todo.name }, 
+							우선순위 ${todo.sequence }
+						</div>
+						<button>-&gt;</button>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${todo.type == 'DONE'}">
+				<div class="todoCard" id="DONE">
+					<div class="todoTitle">${todo.title }</div>
+					<div class="todoContent">
+						<div class="todoBody">
+							등록날짜: ${todo.registeredDate }, 
+							${todo.name }, 
+							우선순위 ${todo.sequence }
+						</div>
+					</div>
+				</div>
+			</c:if>
+		</c:forEach>
 	</section>
 </body>
 </html>

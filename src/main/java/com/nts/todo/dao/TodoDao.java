@@ -14,6 +14,9 @@ public class TodoDao {
 	private static String DATABASE_URL = "jdbc:mysql://localhost/connectdb?useUnicode=true&characterEncoding=utf8";
 	private static String DATABASE_ID = "connectuser";
 	private static String DATABASE_PASSWORD = "connectuser123!@#";
+	
+	public TodoDao(){
+	}
 
 	public int addTodo(TodoDto todo) {
 		int insertCount = 0;
