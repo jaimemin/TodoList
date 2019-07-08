@@ -1,6 +1,7 @@
 package com.nts.todo;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -21,10 +22,15 @@ public class MainServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		TodoDao todoDao = new TodoDao();
-		List<TodoDto> todoList = todoDao.getTodos();
-		request.setAttribute("todoList", todoList);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main.jsp");
-		requestDispatcher.forward(request, response);
+		List<TodoDto> todoList;
+		try {
+			todoList = todoDao.getTodos();
+			request.setAttribute("todoList", todoList);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (SQLException e) {
+			response.sendRedirect("/WEB-INF/jsp/error.jsp");
+		}
 	}
 
 }

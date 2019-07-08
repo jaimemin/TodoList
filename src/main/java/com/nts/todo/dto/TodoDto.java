@@ -1,16 +1,12 @@
 package com.nts.todo.dto;
 
 public class TodoDto {
-
 	private long id;
 	private String name;
 	private String registeredDate;
 	private int sequence;
 	private String title;
 	private String type;
-
-	public TodoDto() {
-	}
 
 	public long getId() {
 		return id;
