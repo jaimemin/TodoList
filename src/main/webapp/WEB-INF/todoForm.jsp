@@ -19,7 +19,7 @@
 				<label>어떤일인가요?</label>
 			</p>
 			<p>
-				<input type="text" name="schedule" placeholder="Swift 공부하기(24자까지)"
+				<input type="text" name="title" placeholder="Swift 공부하기(24자까지)"
 					maxlength="24" required>
 			</p>
 			<p>
@@ -32,9 +32,9 @@
 				<label>우선순위를 선택하세요</label>
 			</p>
 			<p>
-				<input type="radio" name="priority" value="1">1순위
-				<input type="radio" name="priority" value="2">2순위
-				<input type="radio" name="priority" value="3">3순위
+				<input type="radio" name="sequence" value="1">1순위
+				<input type="radio" name="sequence" value="2">2순위
+				<input type="radio" name="sequence" value="3">3순위
 			</p>
 			<div>
 				<article class="previousPage">
