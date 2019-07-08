@@ -2,6 +2,7 @@ package com.nts.todo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,13 +33,17 @@ public class TodoAddServlet extends HttpServlet {
 		todo.setSequence(sequence);
 		
 		TodoDao todoDao = new TodoDao();
-		int insertCount = todoDao.addTodo(todo);
-		if (insertCount > 0) {
-			response.sendRedirect("/main");
-		} else {
-			PrintWriter out = response.getWriter();
-			out.write("error occured on insert");
-			out.close();
+		try {
+			int insertCount = todoDao.addTodo(todo);
+			if (insertCount > 0) {
+				response.sendRedirect("/main");
+			} else {
+				PrintWriter out = response.getWriter();
+				out.write("error occured on insert");
+				out.close();
+			}
+		} catch (SQLException e) {
+			response.sendRedirect("/WEB-INF/jsp/error.jsp");
 		}
 	}
 
