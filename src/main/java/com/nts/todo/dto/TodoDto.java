@@ -1,9 +1,11 @@
 package com.nts.todo.dto;
 
+import java.time.LocalDate;
+
 public class TodoDto {
 	private long id;
 	private String name;
-	private String registeredDate;
+	private LocalDate registeredDate;
 	private int sequence;
 	private String title;
 	private String type;
@@ -24,11 +26,11 @@ public class TodoDto {
 		this.name = name;
 	}
 
-	public String getRegisteredDate() {
+	public LocalDate getRegisteredDate() {
 		return registeredDate;
 	}
 
-	public void setRegisteredDate(String registeredDate) {
+	public void setRegisteredDate(LocalDate registeredDate) {
 		this.registeredDate = registeredDate;
 	}
 
