@@ -27,22 +27,22 @@ public class TodoUpdateServlet extends HttpServlet {
 			String[] path = pathInfo.split("/");
 			String status = (path[1] == "TODO") ? "DOING" : "DONE";
 			long id = Long.parseLong(path[2]);
-			
+
 			TodoDto todo = new TodoDto();
 			todo.setType(status);
 			todo.setId(id);
-			
+
 			TodoDao todoDao = new TodoDao();
 			try {
 				int updatedCount = todoDao.updateTodo(todo);
-				
+
 				String state;
-				if(updatedCount > 0) {
+				if (updatedCount > 0) {
 					state = "updated";
-				}else {
-					state = "error occured on update";
+				} else {
+					state = "failed";
 				}
-				
+
 				PrintWriter out = response.getWriter();
 				out.write(state);
 				out.close();

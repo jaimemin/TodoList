@@ -14,7 +14,7 @@ public class TodoDao {
 	private static String DATABASE_URL = "jdbc:mysql://10.113.116.52:13306/user11";
 	private static String DATABASE_ID = "user11";
 	private static String DATABASE_PASSWORD = "user11";
-	
+
 	public TodoDao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,12 +32,13 @@ public class TodoDao {
 			preparedStatement.setString(1, todo.getTitle());
 			preparedStatement.setString(2, todo.getName());
 			preparedStatement.setInt(3, todo.getSequence());
-			
+
 			insertCount = preparedStatement.executeUpdate();
 		}
+
 		return insertCount;
 	}
-	
+
 	private TodoDto getTodo(ResultSet resultSet) throws SQLException {
 		TodoDto todo = new TodoDto();
 		todo.setTitle(resultSet.getString(1));
@@ -49,7 +50,7 @@ public class TodoDao {
 
 		return todo;
 	}
-	
+
 	public List<TodoDto> getTodos() throws SQLException {
 		List<TodoDto> todoList = new ArrayList<>();
 		String sql = "SELECT title, regdate, name, sequence, type, id FROM todo ORDER BY regdate DESC";
@@ -64,10 +65,11 @@ public class TodoDao {
 				}
 			}
 		}
+
 		return todoList;
 	}
 
-	public int updateTodo(TodoDto todo) throws SQLException{
+	public int updateTodo(TodoDto todo) throws SQLException {
 		int updateCount = 0;
 		String sql = "UPDATE todo SET type = ? WHERE id = ?";
 
@@ -75,10 +77,10 @@ public class TodoDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 			preparedStatement.setString(1, todo.getType());
 			preparedStatement.setLong(2, todo.getId());
-			
+
 			updateCount = preparedStatement.executeUpdate();
 		}
-		
+
 		return updateCount;
 	}
 }

@@ -74,10 +74,41 @@ body {
 	float: right;
 }
 
-.buttons > input {
+.buttons>input {
 	width: 100px;
 	height: 40px;
 	color: white;
 	margin: 10px;
 	background: skyblue;
+}
+
+ul {
+	list-style: none;
+	padding: 0 15px;
+}
+
+.todoCard {
+	padding: 20px 10px 20px 10px;
+	margin: 10px 5px 10px 5px;
+	background-color: skyblue;
+	border: 5px solid black;
+}
+
+.todoTitle {
+	font-size: 20px;
+	font-weight: bolder;
+	margin-bottom: 5px;
+}
+
+.todoContent {
+	display: flex;
+	height: 40px;
+}
+
+.todoBody {
+	width: 90%;
+}
+
+button {
+	width: 10%;
 }

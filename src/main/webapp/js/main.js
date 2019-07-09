@@ -7,22 +7,33 @@ function ajax(event) {
 	let button = event.target;
 	let status = button.getAttribute('buttonStatus');
 	let id = button.getAttribute('buttonId');
+	// url 앞에 .을 추가 안해줄 경우 403 에러가 발생하는데 이유가 궁금합니다.
 	let url = "./todo-update/" + status + "/" + id;
 
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = function() {
-		if (this.readyState === 4 && this.status === 200) {
+		if (this.readyState === 4 && this.status === 200
+				&& this.responseText === 'updated') {
 			let todoCard = button.parentNode.parentNode;
-			if (status == 'TODO') {
+
+			if (status === 'TODO') {
 				button.setAttribute('buttonStatus', 'DOING');
 				document.querySelector('#DOING').appendChild(todoCard);
-			} else if (status == 'DOING') {
+			} else if (status === 'DOING') {
 				button.setAttribute('buttonStatus', 'DONE');
 				button.style.display = 'none';
 				document.querySelector('#DONE').appendChild(todoCard);
 			}
-		}else{
-			console.log("error occured on ajax");
+		} else {
+			console.log(this.readyState);
+			console.log(this.status);
+			console.log(this.responseText);
+
+			if (this.responseText === 'failed') {
+				console.log('error occured on update');
+			} else {
+				console.log('error occured on ajax');
+			}
 		}
 	}
 
