@@ -25,7 +25,7 @@ public class TodoUpdateServlet extends HttpServlet {
 
 		if (pathInfo != null) {
 			String[] path = pathInfo.split("/");
-			String status = (path[1] == "TODO") ? "DOING" : "DONE";
+			String status = (path[1].equals("TODO")) ? "DOING" : "DONE";
 			long id = Long.parseLong(path[2]);
 
 			TodoDto todo = new TodoDto();
