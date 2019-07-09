@@ -15,7 +15,7 @@ function ajax(event) {
 		if (this.readyState === 4 && this.status === 200
 				&& this.responseText === 'updated') {
 			let todoCard = button.parentNode.parentNode;
-
+			console.log("applied");
 			if (status === 'TODO') {
 				button.setAttribute('buttonStatus', 'DOING');
 				document.querySelector('#DOING').appendChild(todoCard);
