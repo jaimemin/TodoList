@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
-@WebServlet("/todoadd")
+@WebServlet("/todo-add")
 public class TodoAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,14 +36,14 @@ public class TodoAddServlet extends HttpServlet {
 		try {
 			int insertCount = todoDao.addTodo(todo);
 			if (insertCount > 0) {
-				response.sendRedirect("/main");
+				response.sendRedirect("./main");
 			} else {
 				PrintWriter out = response.getWriter();
 				out.write("error occured on insert");
 				out.close();
 			}
 		} catch (SQLException e) {
-			response.sendRedirect("/WEB-INF/jsp/error.jsp");
+			throw new RuntimeException();
 		}
 	}
 

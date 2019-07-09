@@ -14,7 +14,7 @@
 		<h2>할일 등록</h2>
 	</header>
 	<section>
-		<form name="" action="" accept-charset="utf-8" method="post">
+		<form id="todoForm" action="todo-add" accept-charset="utf-8" method="post">
 			<p>
 				<label>어떤일인가요?</label>
 			</p>

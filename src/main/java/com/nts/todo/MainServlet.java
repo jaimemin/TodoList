@@ -26,10 +26,11 @@ public class MainServlet extends HttpServlet {
 		try {
 			todoList = todoDao.getTodos();
 			request.setAttribute("todoList", todoList);
+
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			response.sendRedirect("/WEB-INF/jsp/error.jsp");
+			throw new RuntimeException();
 		}
 	}
 

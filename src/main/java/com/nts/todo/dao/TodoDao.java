@@ -41,7 +41,7 @@ public class TodoDao {
 	private TodoDto getTodo(ResultSet resultSet) throws SQLException {
 		TodoDto todo = new TodoDto();
 		todo.setTitle(resultSet.getString(1));
-		todo.setRegisteredDate(resultSet.getString(2));
+		todo.setRegisteredDate(resultSet.getTimestamp(2).toLocalDateTime().toLocalDate());
 		todo.setName(resultSet.getString(3));
 		todo.setSequence(resultSet.getInt(4));
 		todo.setType(resultSet.getString(5));
