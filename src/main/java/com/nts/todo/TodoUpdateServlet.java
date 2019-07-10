@@ -44,6 +44,7 @@ public class TodoUpdateServlet extends HttpServlet {
 				return;
 			}
 		} catch (SQLException e) {
+			System.out.println("SQLException 발생");
 			throw new RuntimeException(e);
 		}
 	}

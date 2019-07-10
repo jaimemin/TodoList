@@ -48,6 +48,7 @@ public class TodoAddServlet extends HttpServlet {
  
 			response.sendRedirect("./main");
 		} catch (SQLException e) {
+			System.out.println("SQLException 발생");
 			throw new RuntimeException(e);
 		}
 	}

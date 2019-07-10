@@ -28,6 +28,7 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
+			System.out.println("SQLException 발생");
 			throw new RuntimeException(e);
 		}
 	}
