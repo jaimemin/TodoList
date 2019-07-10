@@ -19,7 +19,7 @@ public class TodoDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -59,9 +59,7 @@ public class TodoDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 			try (ResultSet resultSet = preparedStatement.executeQuery()) {
 				while (resultSet.next()) {
-					TodoDto todo = getTodo(resultSet);
-
-					todoList.add(todo);
+					todoList.add(getTodo(resultSet));
 				}
 			}
 		}

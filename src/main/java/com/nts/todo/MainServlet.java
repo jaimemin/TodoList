@@ -21,16 +21,14 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		TodoDao todoDao = new TodoDao();
-		List<TodoDto> todoList;
 		try {
-			todoList = todoDao.getTodos();
-			request.setAttribute("todoList", todoList);
+			TodoDao todoDao = new TodoDao();
+			request.setAttribute("todoList", todoDao.getTodos());
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			throw new RuntimeException();
+			throw new RuntimeException(e);
 		}
 	}
 
