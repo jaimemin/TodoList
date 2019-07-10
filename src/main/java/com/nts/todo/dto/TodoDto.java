@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class TodoDto {
 	private long id;
 	private String name;
-	private LocalDate registeredDate;
+	private Timestamp registeredDate;
 	private int sequence;
 	private String title;
 	private String type;
@@ -24,15 +24,23 @@ public class TodoDto {
 	}
 
 	public void setName(String name) {
+		if (name == null) {
+			throw new NullPointerException("name is null");
+		}
+
 		this.name = name;
 	}
 
 	public LocalDate getRegisteredDate() {
-		return registeredDate;
+		return registeredDate.toLocalDateTime().toLocalDate();
 	}
 
 	public void setRegisteredDate(Timestamp registeredDate) {
-		this.registeredDate = registeredDate.toLocalDateTime().toLocalDate();
+		if (registeredDate == null) {
+			throw new NullPointerException("registeredDate is null");
+		}
+
+		this.registeredDate = registeredDate;
 	}
 
 	public int getSequence() {
@@ -48,6 +56,10 @@ public class TodoDto {
 	}
 
 	public void setTitle(String title) {
+		if (title == null) {
+			throw new NullPointerException("title is null");
+		}
+
 		this.title = title;
 	}
 
@@ -56,6 +68,10 @@ public class TodoDto {
 	}
 
 	public void setType(String type) {
+		if (type == null) {
+			throw new NullPointerException("type is null");
+		}
+
 		this.type = type;
 	}
 

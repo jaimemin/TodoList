@@ -13,42 +13,39 @@ import javax.servlet.http.HttpServletResponse;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
-@WebServlet("/todo-update/*")
+@WebServlet("/todo-update")
 public class TodoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/plain;charset=UTF-8");
-		String pathInfo = request.getPathInfo();
-
-		if (pathInfo != null) {
-			String[] path = pathInfo.split("/");
-			String status = (path[1].equals("TODO")) ? "DOING" : "DONE";
-			long id = Long.parseLong(path[2]);
-
-			TodoDto todo = new TodoDto();
-			todo.setType(status);
-			todo.setId(id);
-
-			TodoDao todoDao = new TodoDao();
-			
-			try {
-				int updatedCount = todoDao.updateTodo(todo);
-				String state = (updatedCount > 0) ? "updated" : "failed";
-				
-				PrintWriter out = response.getWriter();
-				out.write(state);
-				out.close();
-			} catch (SQLException e) {
-				throw new RuntimeException();
-			}
-		} else {
-			PrintWriter out = response.getWriter();
-			out.write("error occured on update");
-			out.close();
-		}
+	
+	private TodoDto getTodo(HttpServletRequest request) {
+		String status = request.getParameter("status");
+		String changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
+		long id = Long.parseLong(request.getParameter("id"));
+		
+		TodoDto todo = new TodoDto();
+		todo.setType(changedStatus);
+		todo.setId(id);
+		
+		return todo;
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/plain;charset=UTF-8");
+
+		try {
+			TodoDto todo = getTodo(request);
+			TodoDao todoDao = new TodoDao();
+			int updatedCount = todoDao.updateTodo(todo);
+			
+			if(updatedCount < 1) {
+				System.out.println("error occured on update");
+				return;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }

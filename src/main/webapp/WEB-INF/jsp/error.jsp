@@ -7,9 +7,6 @@
 <title>Error Page</title>
 </head>
 <body>
-	<c:out value="${requestScope['javax.servlet.error.message']}" /><br>
-	<c:out value="${requestScope['javax.servlet.error.exception_type']}" /><br>
-	<c:out value="${requestScope['javax.servlet.error.exception'] }" /><br>
-	<c:out value="${requestScope['javax.servlet.error.status_code'] }" />
+	<h1>에러 발생</h1>
 </body>
 </html>

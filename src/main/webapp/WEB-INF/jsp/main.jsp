@@ -21,7 +21,7 @@
 			<div class="status">TODO</div>
 			<ul id="TODO">
 				<c:forEach var="todo" items="${todoList }">
-					<c:if test="${todo.type == 'TODO' }">
+					<c:if test="${todo.type eq 'TODO'}">
 						<li>
 							<div class="todoCard">
 								<div class="todoTitle">${todo.title }</div>
@@ -44,7 +44,7 @@
 			<div class="status">DOING</div>
 			<ul id="DOING">
 				<c:forEach var="todo" items="${todoList }">		
-					<c:if test="${todo.type == 'DOING'}">
+					<c:if test="${todo.type eq 'DOING'}">
 						<li>
 							<div class="todoCard">
 								<div class="todoTitle">${todo.title }</div>
@@ -67,7 +67,7 @@
 			<div class="status">DONE</div>
 			<ul id="DONE">
 				<c:forEach var="todo" items="${todoList }">
-					<c:if test="${todo.type == 'DONE'}">
+					<c:if test="${todo.type eq 'DONE'}">
 						<li>
 							<div class="todoCard">
 								<div class="todoTitle">${todo.title }</div>

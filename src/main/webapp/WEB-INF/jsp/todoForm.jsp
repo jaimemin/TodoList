@@ -32,9 +32,9 @@
 				<label>우선순위를 선택하세요</label>
 			</p>
 			<p>
-				<input type="radio" name="sequence" value="1">1순위
-				<input type="radio" name="sequence" value="2">2순위
-				<input type="radio" name="sequence" value="3">3순위
+				<input type="radio" name="sequence" value="1"><label>1순위</label>
+				<input type="radio" name="sequence" value="2"><label>2순위</label>
+				<input type="radio" name="sequence" value="3"><label>3순위</label>
 			</p>
 			<div>
 				<article class="previousPage">

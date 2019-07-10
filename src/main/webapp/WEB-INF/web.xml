@@ -8,6 +8,11 @@
 		<exception-type>java.lang.RuntimeException</exception-type>
 		<location>/WEB-INF/jsp/error.jsp</location>
 	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/WEB-INF/jsp/error.jsp</location>
+	</error-page>
 
 	<error-page>
 		<exception-type>java.sql.SQLException</exception-type>
