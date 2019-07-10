@@ -1,7 +1,7 @@
 let buttonList = document.getElementsByTagName('button');
-for (let button = 0; button < buttonList.length; button++) {
-	buttonList[button].addEventListener('click', ajax);
-}
+buttonList.forEach(function(element){
+	element.addEventListener('click', ajax);
+});
 
 function ajax(event) {
 	let button = event.target;
