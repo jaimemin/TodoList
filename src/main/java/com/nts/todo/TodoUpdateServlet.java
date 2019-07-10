@@ -33,16 +33,11 @@ public class TodoUpdateServlet extends HttpServlet {
 			todo.setId(id);
 
 			TodoDao todoDao = new TodoDao();
+			
 			try {
 				int updatedCount = todoDao.updateTodo(todo);
-
-				String state;
-				if (updatedCount > 0) {
-					state = "updated";
-				} else {
-					state = "failed";
-				}
-
+				String state = (updatedCount > 0) ? "updated" : "failed";
+				
 				PrintWriter out = response.getWriter();
 				out.write(state);
 				out.close();
