@@ -19,6 +19,10 @@ public class TodoUpdateServlet extends HttpServlet {
 	
 	private TodoDto getTodo(HttpServletRequest request) {
 		String status = request.getParameter("status");
+		if(status == null) {
+			throw new NullPointerException();
+		}
+		
 		String changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 		long id = Long.parseLong(request.getParameter("id"));
 		
@@ -46,6 +50,9 @@ public class TodoUpdateServlet extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("SQLException 발생");
 			throw new RuntimeException(e);
+		} catch (NullPointerException e2) {
+			System.out.println("NullPointerException 발생");
+			throw new RuntimeException(e2);
 		}
 	}
 	
