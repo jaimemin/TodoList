@@ -2,11 +2,12 @@ package com.nts.todo.dto;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TodoDto {
 	private long id;
 	private String name;
-	private Timestamp registeredDate;
+	private LocalDateTime registeredDate;
 	private int sequence;
 	private String title;
 	private String type;
@@ -27,16 +28,16 @@ public class TodoDto {
 		this.name = name;
 	}
 
-	public LocalDate getRegisteredDate() {
-		return registeredDate.toLocalDateTime().toLocalDate();
+	public LocalDateTime getRegisteredDate() {
+		return registeredDate;
+	}
+	
+	public LocalDate getFormattedDate() {
+		return registeredDate.toLocalDate();
 	}
 
-	public void setRegisteredDate(Timestamp registeredDate) {
-		if (registeredDate == null) {
-			throw new NullPointerException("registeredDate is null");
-		}
-
-		this.registeredDate = registeredDate;
+	public void setRegisteredDate(Timestamp registeredDate) throws NullPointerException {
+		this.registeredDate = registeredDate.toLocalDateTime();
 	}
 
 	public int getSequence() {
