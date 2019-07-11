@@ -26,15 +26,15 @@
 				<label>누가 할일인가요?</label>
 			</p>
 			<p>
-				<input type="text" name="name" placeholder="홍길동">
+				<input type="text" name="name" placeholder="홍길동" required>
 			</p>
 			<p>
 				<label>우선순위를 선택하세요</label>
 			</p>
 			<p>
-				<label><input type="radio" name="sequence" value="1"/>1순위</label>
-				<label><input type="radio" name="sequence" value="2"/>2순위</label>
-				<label><input type="radio" name="sequence" value="3">3순위</label>
+				<label><input type="radio" name="sequence" value="1" required>1순위</label>
+				<label><input type="radio" name="sequence" value="2" required>2순위</label>
+				<label><input type="radio" name="sequence" value="3" required>3순위</label>
 			</p>
 			<div>
 				<article class="previousPage">
