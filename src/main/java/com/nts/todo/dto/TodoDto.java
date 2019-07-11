@@ -24,10 +24,6 @@ public class TodoDto {
 	}
 
 	public void setName(String name) {
-		if (name == null) {
-			throw new NullPointerException("name is null");
-		}
-
 		this.name = name;
 	}
 
@@ -56,10 +52,6 @@ public class TodoDto {
 	}
 
 	public void setTitle(String title) {
-		if (title == null) {
-			throw new NullPointerException("title is null");
-		}
-
 		this.title = title;
 	}
 
@@ -68,10 +60,6 @@ public class TodoDto {
 	}
 
 	public void setType(String type) {
-		if (type == null) {
-			throw new NullPointerException("type is null");
-		}
-
 		this.type = type;
 	}
 
