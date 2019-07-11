@@ -27,7 +27,7 @@
 								<div class="todoTitle">${todo.title }</div>
 								<div class="todoContent">
 									<div class="todoBody">
-										등록날짜: ${todo.registeredDate }, 
+										등록날짜: ${todo.formattedDate }, 
 										${todo.name }, 
 										우선순위 ${todo.sequence }
 									</div>
@@ -50,7 +50,7 @@
 								<div class="todoTitle">${todo.title }</div>
 								<div class="todoContent">
 									<div class="todoBody">
-										등록날짜: ${todo.registeredDate }, 
+										등록날짜: ${todo.formattedDate },
 										${todo.name }, 
 										우선순위 ${todo.sequence }
 									</div>
@@ -73,7 +73,7 @@
 								<div class="todoTitle">${todo.title }</div>
 								<div class="todoContent">
 									<div class="todoBody">
-										등록날짜: ${todo.registeredDate }, 
+										등록날짜: ${todo.formattedDate }, 
 										${todo.name }, 
 										우선순위 ${todo.sequence }
 									</div>
