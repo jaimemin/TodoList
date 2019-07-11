@@ -16,20 +16,27 @@ import com.nts.todo.dto.TodoDto;
 @WebServlet("/todo-update")
 public class TodoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private TodoDto getTodo(HttpServletRequest request) {
-		String status = request.getParameter("status");
-		if(status == null) {
-			throw new NullPointerException();
-		}
-		
-		String changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 		long id = Long.parseLong(request.getParameter("id"));
-		
+		String status = request.getParameter("status");
+		String changedStatus = "";
+
+		switch (status) {
+		case "TODO":
+			changedStatus = "DOING";
+			break;
+		case "DOING":
+			changedStatus = "DONE";
+			break;
+		default:
+			throw new IllegalArgumentException("illegal parameter");
+		}
+
 		TodoDto todo = new TodoDto();
 		todo.setType(changedStatus);
 		todo.setId(id);
-		
+
 		return todo;
 	}
 
@@ -42,8 +49,8 @@ public class TodoUpdateServlet extends HttpServlet {
 			TodoDto todo = getTodo(request);
 			TodoDao todoDao = new TodoDao();
 			int updatedCount = todoDao.updateTodo(todo);
-			
-			if(updatedCount < 1) {
+
+			if (updatedCount < 1) {
 				System.out.println("error occured on update");
 				return;
 			}
@@ -53,7 +60,10 @@ public class TodoUpdateServlet extends HttpServlet {
 		} catch (NullPointerException e2) {
 			System.out.println("NullPointerException 발생");
 			throw new RuntimeException(e2);
+		} catch (IllegalArgumentException e3) {
+			System.out.println("IllegalArguementException 발생");
+			throw new RuntimeException(e3);
 		}
 	}
-	
+
 }

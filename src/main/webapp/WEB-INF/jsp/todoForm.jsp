@@ -38,7 +38,7 @@
 			</p>
 			<div>
 				<article class="previousPage">
-					<a href="./main">&lt; 이전</a>
+					<a href="/TodoList/main">&lt; 이전</a>
 				</article>
 				<article class="buttons">
 					<input type="submit" value="제출">
