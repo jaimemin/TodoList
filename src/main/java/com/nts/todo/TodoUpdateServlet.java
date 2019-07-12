@@ -21,7 +21,7 @@ public class TodoUpdateServlet extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("status");
 		String changedStatus = "";
-
+		System.out.println("status: " + status);
 		/*
 		 * 서비스 지속성을 위해 status가 invalid한 값이면 type을 TODO로
 		 */
@@ -29,7 +29,7 @@ public class TodoUpdateServlet extends HttpServlet {
 			changedStatus = "TODO";
 		}
 
-		if (changedStatus != "") {
+		if (changedStatus == "") {
 			changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 		}
 
