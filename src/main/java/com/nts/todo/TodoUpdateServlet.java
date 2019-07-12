@@ -49,7 +49,7 @@ public class TodoUpdateServlet extends HttpServlet {
 			TodoDto todo = getTodo(request);
 			TodoDao todoDao = new TodoDao();
 			todoDao.updateTodo(todo);
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			System.out.println(e.getClass().getName());
 			System.out.println(e.getMessage());
 		}

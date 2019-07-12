@@ -27,7 +27,7 @@ public class MainServlet extends HttpServlet {
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			System.out.println(e.getClass().getName());
 			System.out.println(e.getMessage());
 			response.getOutputStream().println("<script>"
