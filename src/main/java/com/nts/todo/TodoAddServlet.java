@@ -16,40 +16,44 @@ import com.nts.todo.dto.TodoDto;
 @WebServlet("/todo-add")
 public class TodoAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private TodoDto getTodo(HttpServletRequest request) {
 		String title = request.getParameter("title");
 		String name = request.getParameter("name");
 		int sequence = Integer.parseInt(request.getParameter("sequence"));
-		
+
 		TodoDto todo = new TodoDto();
 		todo.setTitle(title);
 		todo.setName(name);
 		todo.setSequence(sequence);
-		
+
 		return todo;
 	}
-	
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 매개변수로 전달되는 데이터의 한글 처리
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/plain;charset=UTF-8");
-		
+
 		try {
 			TodoDto todo = getTodo(request);
 			TodoDao todoDao = new TodoDao();
 			int insertCount = todoDao.addTodo(todo);
-			
-			if(insertCount < 1) {
+
+			if (insertCount < 1) {
 				System.out.println("error occured on insert");
 				return;
 			}
- 
+
 			response.sendRedirect("./main");
 		} catch (SQLException e) {
 			System.out.println("SQLException 발생");
 			throw new RuntimeException(e);
+		} catch (IllegalArgumentException e2) {
+			System.out.println("IllegalArgumentException 발생");
+			throw new RuntimeException(e2);
 		}
 	}
 
