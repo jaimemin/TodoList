@@ -7,20 +7,25 @@ function ajax(event) {
 	let button = event.target;
 	let status = button.getAttribute('buttonStatus');
 	let id = button.getAttribute('buttonId');
-	let parameter = "status=" + status + "&id=" + id;
+	let parameter = `status=${status}&id=${id}`;
 
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = function() {
-		if (this.readyState === 4 && this.status === 200) {
+		if (this.readyState === 4) {
+			if(this.status >= 400){
+				alert("에러 발생! 잠시 후에 서비스를 이용해주세요.")
+				return;
+			}
+			
 			let todoCard = button.parentNode.parentNode;
-			if (status === 'TODO') {
-				button.setAttribute('buttonStatus', 'DOING');
-				document.querySelector('#DOING').appendChild(todoCard);
-			} else if (status === 'DOING') {
-				button.setAttribute('buttonStatus', 'DONE');
+			let changedStatus = (status === 'TODO') ? 'DOING' : 'DONE';
+			
+			if (changedStatus === 'DONE') {
 				button.style.display = 'none';
-				document.querySelector('#DONE').appendChild(todoCard);
-			}	
+			}
+			
+			button.setAttribute('buttonStatus', changedStatus);
+			document.querySelector('#' + changedStatus).appendChild(todoCard);
 		}
 	}
 

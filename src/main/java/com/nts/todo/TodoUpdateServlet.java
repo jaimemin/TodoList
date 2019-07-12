@@ -22,15 +22,15 @@ public class TodoUpdateServlet extends HttpServlet {
 		String status = request.getParameter("status");
 		String changedStatus = "";
 
-		switch (status) {
-		case "TODO":
-			changedStatus = "DOING";
-			break;
-		case "DOING":
-			changedStatus = "DONE";
-			break;
-		default:
-			throw new IllegalArgumentException("illegal parameter");
+		/*
+		 * 서비스 지속성을 위해 status가 invalid한 값이면 type을 TODO로
+		 */
+		if (!(status.equals("TODO") || status.equals("DOING"))) {
+			changedStatus = "TODO";
+		}
+
+		if (changedStatus != "") {
+			changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 		}
 
 		TodoDto todo = new TodoDto();
@@ -48,21 +48,10 @@ public class TodoUpdateServlet extends HttpServlet {
 		try {
 			TodoDto todo = getTodo(request);
 			TodoDao todoDao = new TodoDao();
-			int updatedCount = todoDao.updateTodo(todo);
-
-			if (updatedCount < 1) {
-				System.out.println("error occured on update");
-				return;
-			}
-		} catch (SQLException e) {
-			System.out.println("SQLException 발생");
-			throw new RuntimeException(e);
-		} catch (NullPointerException e2) {
-			System.out.println("NullPointerException 발생");
-			throw new RuntimeException(e2);
-		} catch (IllegalArgumentException e3) {
-			System.out.println("IllegalArguementException 발생");
-			throw new RuntimeException(e3);
+			todoDao.updateTodo(todo);
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getClass().getName());
+			System.out.println(e.getMessage());
 		}
 	}
 
