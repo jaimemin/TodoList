@@ -15,16 +15,12 @@ public class TodoDao {
 	private static String DATABASE_ID = "user11";
 	private static String DATABASE_PASSWORD = "user11";
 
-	public TodoDao() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
-		}
+	public TodoDao() throws ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
 	}
 
 	public int addTodo(TodoDto todo) throws SQLException {
-		int insertCount = 0;
+		int insertCount;
 		String sql = "INSERT INTO todo(title, name, sequence) VALUES (?, ?, ?)";
 
 		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_ID, DATABASE_PASSWORD);
@@ -68,7 +64,7 @@ public class TodoDao {
 	}
 
 	public int updateTodo(TodoDto todo) throws SQLException {
-		int updateCount = 0;
+		int updateCount;
 		String sql = "UPDATE todo SET type = ? WHERE id = ?";
 
 		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_ID, DATABASE_PASSWORD);

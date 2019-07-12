@@ -31,13 +31,13 @@ public class TodoDto {
 	public LocalDateTime getRegisteredDate() {
 		return registeredDate;
 	}
-	
+
 	public LocalDate getFormattedDate() {
-		return registeredDate.toLocalDate();
+		return (registeredDate == null) ? null : registeredDate.toLocalDate();
 	}
 
-	public void setRegisteredDate(Timestamp registeredDate) throws NullPointerException {
-		this.registeredDate = registeredDate.toLocalDateTime();
+	public void setRegisteredDate(Timestamp registeredDate) {
+		this.registeredDate = (registeredDate == null) ? null : registeredDate.toLocalDateTime();
 	}
 
 	public int getSequence() {

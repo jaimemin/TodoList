@@ -27,12 +27,12 @@ public class MainServlet extends HttpServlet {
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
-		} catch (SQLException e) {
-			System.out.println("SQLException 발생");
-			throw new RuntimeException(e);
-		} catch (NullPointerException e2) {
-			System.out.println("NullPointerException 발생");
-			throw new RuntimeException(e2);
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getClass().getName());
+			System.out.println(e.getMessage());
+			response.getOutputStream().println("<script>"
+					+ "alert('Database에서 리스트를 불러오는데 실패했습니다.');"
+					+ "</script>");
 		}
 	}
 

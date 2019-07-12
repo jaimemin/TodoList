@@ -40,20 +40,16 @@ public class TodoAddServlet extends HttpServlet {
 		try {
 			TodoDto todo = getTodo(request);
 			TodoDao todoDao = new TodoDao();
-			int insertCount = todoDao.addTodo(todo);
-
-			if (insertCount < 1) {
-				System.out.println("error occured on insert");
-				return;
-			}
+			todoDao.addTodo(todo);
 
 			response.sendRedirect("./main");
-		} catch (SQLException e) {
-			System.out.println("SQLException 발생");
-			throw new RuntimeException(e);
-		} catch (IllegalArgumentException e2) {
-			System.out.println("IllegalArgumentException 발생");
-			throw new RuntimeException(e2);
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getClass().getName());
+			System.out.println(e.getMessage());
+			response.getOutputStream().println("<script>"
+					+ "alert('Todo 추가 싫패\n 메인페이지로 이동합니다.');"
+					+ "location.href='/main';"
+					+ "</script>");
 		}
 	}
 
