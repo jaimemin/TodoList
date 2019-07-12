@@ -12,7 +12,7 @@ function ajax(event) {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = function() {
 		if (this.readyState === 4) {
-			if(this.status >= 400){
+			if (this.status >= 400){
 				alert("에러 발생! 잠시 후에 서비스를 이용해주세요.")
 				return;
 			}
