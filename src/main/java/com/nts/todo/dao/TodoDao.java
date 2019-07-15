@@ -15,12 +15,15 @@ public class TodoDao {
 	private static String DATABASE_URL = "jdbc:mysql://10.113.116.52:13306/user11";
 	private static String DATABASE_ID = "user11";
 	private static String DATABASE_PASSWORD = "user11";
-	private static TodoDao instance = new TodoDao();
-	
+	private static TodoDao instance;
+
 	private TodoDao() {
 	}
-	
+
 	public static TodoDao getInstance() {
+		if (instance == null) {
+			instance = new TodoDao();
+		}
 		return instance;
 	}
 
@@ -55,13 +58,13 @@ public class TodoDao {
 
 		return todoList;
 	}
-	
+
 	private TodoDto getTodo(ResultSet resultSet) throws SQLException {
 		TodoDto todo = new TodoDto();
 		todo.setTitle(resultSet.getString(1));
 		Timestamp time = resultSet.getTimestamp(2);
 		// time이 null일 경우 바인딩을 안 시킨다.
-		if(time != null) {
+		if (time != null) {
 			todo.setRegisteredDate(time);
 		}
 		todo.setName(resultSet.getString(3));
