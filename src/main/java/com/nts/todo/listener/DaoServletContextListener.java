@@ -10,10 +10,16 @@ public class DaoServletContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		ServletContext servletContext = event.getServletContext();
-		TodoDao todoDao = new TodoDao();
-		
-		servletContext.setAttribute("dao", todoDao);
+		ServletContext context = event.getServletContext();
+
+		try {
+			String driver = ((ServletContext) event).getInitParameter("jdbcDriver");
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
 	}
 
 	@Override

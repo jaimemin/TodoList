@@ -25,8 +25,7 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, CustomException {
 		try {
-			ServletContext servletContext = this.getServletContext();
-			TodoDao todoDao = (TodoDao) servletContext.getAttribute("dao");
+			TodoDao todoDao = TodoDao.getInstance();
 			
 			List<TodoDto> todoList = new ArrayList<>();
 			List<TodoDto> doingList = new ArrayList<>();

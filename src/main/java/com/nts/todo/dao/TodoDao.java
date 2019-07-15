@@ -15,14 +15,13 @@ public class TodoDao {
 	private static String DATABASE_URL = "jdbc:mysql://10.113.116.52:13306/user11";
 	private static String DATABASE_ID = "user11";
 	private static String DATABASE_PASSWORD = "user11";
-
-	public TodoDao() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// 불러오지 못할 경우 심각한 에러이므로 RuntimeException 던진다
-			throw new RuntimeException(e);
-		}
+	private static TodoDao instance = new TodoDao();
+	
+	private TodoDao() {
+	}
+	
+	public static TodoDao getInstance() {
+		return instance;
 	}
 
 	public int addTodo(TodoDto todo) throws SQLException {
