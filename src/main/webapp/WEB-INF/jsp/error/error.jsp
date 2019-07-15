@@ -13,9 +13,9 @@
 		에러가 발생하였습니다.<br>
 		잠시 후 다시 이용해주세요.
 		<%
-		String errorMessage = ((CustomException)exception).getErrorMessage();
-		out.println(errorMessage);
-	%>
+			String errorMessage = ((CustomException)exception).getErrorMessage();
+			out.println(errorMessage);
+		%>
 	</h1>
 </body>
 </html>
