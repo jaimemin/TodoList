@@ -8,6 +8,9 @@
 <title>Error Page</title>
 </head>
 <body>
-	<h1>에러 발생</h1>
+	<h1>
+		에러가 발생하였습니다.<br>
+		잠시 후 다시 이용해주세요.
+	</h1>
 </body>
 </html>
