@@ -3,56 +3,58 @@ package com.nts.todo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nts.exception.CustomException;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
 @WebServlet("/todo-update")
 public class TodoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final ArrayList<String> TYPE = new ArrayList<>(Arrays.asList("TODO", "DOING"));
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, CustomException {
+		response.setContentType("text/plain;charset=UTF-8");
+
+		try {
+			ServletContext servletContext = this.getServletContext();
+			TodoDao todoDao = (TodoDao) servletContext.getAttribute("dao");
+			TodoDto todo = getTodo(request);
+
+			todoDao.updateTodo(todo);
+		} catch (SQLException | IllegalArgumentException e) {
+			e.printStackTrace();
+			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.");
+		}
+	}
 
 	private TodoDto getTodo(HttpServletRequest request) {
 		long id = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("status");
-		String changedStatus = "";
+		String changedStatus;
 
-		/*
-		 * 서비스 지속성을 위해 status가 invalid한 값이면 type을 TODO로
-		 */
-		if (!(status.equals("TODO") || status.equals("DOING"))) {
-			changedStatus = "TODO";
+		if (TYPE.contains(status) == false) {
+			throw new IllegalArgumentException("type에 알 수 없는 값이 저장되어있습니다.");
 		}
 
-		if (changedStatus == "") {
-			changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
-		}
+		changedStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 
 		TodoDto todo = new TodoDto();
 		todo.setType(changedStatus);
 		todo.setId(id);
 
 		return todo;
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/plain;charset=UTF-8");
-
-		try {
-			TodoDto todo = getTodo(request);
-			TodoDao todoDao = new TodoDao();
-			todoDao.updateTodo(todo);
-		} catch (SQLException e) {
-			System.out.println(e.getClass().getName());
-			System.out.println(e.getMessage());
-		}
 	}
 
 }

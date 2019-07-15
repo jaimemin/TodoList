@@ -21,21 +21,19 @@
 			<div class="status">TODO</div>
 			<ul id="TODO">
 				<c:forEach var="todo" items="${todoList }">
-					<c:if test="${todo.type eq 'TODO'}">
-						<li>
-							<div class="todoCard">
-								<div class="todoTitle">${todo.title }</div>
-								<div class="todoContent">
-									<div class="todoBody">
-										등록날짜: ${todo.formattedDate }, 
-										${todo.name }, 
-										우선순위 ${todo.sequence }
-									</div>
-									<button type="button" buttonStatus="TODO" buttonId=${todo.id}>-&gt;</button>
+					<li>
+						<div class="todoCard">
+							<div class="todoTitle">${todo.title }</div>
+							<div class="todoContent">
+								<div class="todoBody">
+									등록날짜: ${todo.formattedDate }, 
+									${todo.name }, 
+									우선순위 ${todo.sequence }
 								</div>
+								<button type="button" buttonStatus="TODO" buttonId=${todo.id}>-&gt;</button>
 							</div>
-						</li>
-					</c:if>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -43,22 +41,20 @@
 		<div class="list">
 			<div class="status">DOING</div>
 			<ul id="DOING">
-				<c:forEach var="todo" items="${todoList }">		
-					<c:if test="${todo.type eq 'DOING'}">
-						<li>
-							<div class="todoCard">
-								<div class="todoTitle">${todo.title }</div>
-								<div class="todoContent">
-									<div class="todoBody">
-										등록날짜: ${todo.formattedDate },
-										${todo.name }, 
-										우선순위 ${todo.sequence }
-									</div>
-									<button type="button" buttonStatus="DOING" buttonId=${todo.id}>-&gt;</button>
+				<c:forEach var="todo" items="${doingList }">		
+					<li>
+						<div class="todoCard">
+							<div class="todoTitle">${todo.title }</div>
+							<div class="todoContent">
+								<div class="todoBody">
+									등록날짜: ${todo.formattedDate },
+									${todo.name }, 
+									우선순위 ${todo.sequence }
 								</div>
+								<button type="button" buttonStatus="DOING" buttonId=${todo.id}>-&gt;</button>
 							</div>
-						</li>
-					</c:if>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -66,21 +62,19 @@
 		<div class="list">
 			<div class="status">DONE</div>
 			<ul id="DONE">
-				<c:forEach var="todo" items="${todoList }">
-					<c:if test="${todo.type eq 'DONE'}">
-						<li>
-							<div class="todoCard">
-								<div class="todoTitle">${todo.title }</div>
-								<div class="todoContent">
-									<div class="todoBody">
-										등록날짜: ${todo.formattedDate }, 
-										${todo.name }, 
-										우선순위 ${todo.sequence }
-									</div>
+				<c:forEach var="todo" items="${doneList }">
+					<li>
+						<div class="todoCard">
+							<div class="todoTitle">${todo.title }</div>
+							<div class="todoContent">
+								<div class="todoBody">
+									등록날짜: ${todo.formattedDate }, 
+									${todo.name }, 
+									우선순위 ${todo.sequence }
 								</div>
 							</div>
-						</li>
-					</c:if>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>

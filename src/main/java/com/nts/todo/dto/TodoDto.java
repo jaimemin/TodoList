@@ -33,11 +33,11 @@ public class TodoDto {
 	}
 
 	public LocalDate getFormattedDate() {
-		return (registeredDate == null) ? null : registeredDate.toLocalDate();
+		return registeredDate.toLocalDate();
 	}
 
 	public void setRegisteredDate(Timestamp registeredDate) {
-		this.registeredDate = (registeredDate == null) ? null : registeredDate.toLocalDateTime();
+		this.registeredDate = registeredDate.toLocalDateTime();
 	}
 
 	public int getSequence() {

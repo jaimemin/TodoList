@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,18 +41,6 @@ public class TodoDao {
 		return insertCount;
 	}
 
-	private TodoDto getTodo(ResultSet resultSet) throws SQLException {
-		TodoDto todo = new TodoDto();
-		todo.setTitle(resultSet.getString(1));
-		todo.setRegisteredDate(resultSet.getTimestamp(2));
-		todo.setName(resultSet.getString(3));
-		todo.setSequence(resultSet.getInt(4));
-		todo.setType(resultSet.getString(5));
-		todo.setId(resultSet.getLong(6));
-
-		return todo;
-	}
-
 	public List<TodoDto> getTodos() throws SQLException {
 		List<TodoDto> todoList = new ArrayList<>();
 		String sql = "SELECT title, regdate, name, sequence, type, id FROM todo ORDER BY regdate DESC";
@@ -66,6 +55,22 @@ public class TodoDao {
 		}
 
 		return todoList;
+	}
+	
+	private TodoDto getTodo(ResultSet resultSet) throws SQLException {
+		TodoDto todo = new TodoDto();
+		todo.setTitle(resultSet.getString(1));
+		Timestamp time = resultSet.getTimestamp(2);
+		// time이 null일 경우 바인딩을 안 시킨다.
+		if(time != null) {
+			todo.setRegisteredDate(time);
+		}
+		todo.setName(resultSet.getString(3));
+		todo.setSequence(resultSet.getInt(4));
+		todo.setType(resultSet.getString(5));
+		todo.setId(resultSet.getLong(6));
+
+		return todo;
 	}
 
 	public int updateTodo(TodoDto todo) throws SQLException {
