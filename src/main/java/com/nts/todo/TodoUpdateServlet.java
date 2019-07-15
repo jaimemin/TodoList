@@ -35,7 +35,7 @@ public class TodoUpdateServlet extends HttpServlet {
 			todoDao.updateTodo(todo);
 		} catch (SQLException | IllegalArgumentException e) {
 			e.printStackTrace();
-			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.");
+			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.\n" + e.getMessage());
 		}
 	}
 
