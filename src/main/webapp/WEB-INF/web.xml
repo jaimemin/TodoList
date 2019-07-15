@@ -5,8 +5,18 @@
 	version="3.1">
 	<display-name>Archetype Created Web Application</display-name>
 	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/jsp/error/error403.jsp</location>
+	</error-page>
+	
+	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/jsp/error/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/jsp/error/error405.jsp</location>
 	</error-page>
 	
 	<error-page>
