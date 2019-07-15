@@ -25,7 +25,7 @@ function ajax(event) {
 			}
 			
 			button.setAttribute('buttonStatus', changedStatus);
-			document.querySelector('#' + changedStatus).appendChild(todoCard);
+			document.querySelector(`#${changedStatus}`).appendChild(todoCard);
 		}
 	}
 	
