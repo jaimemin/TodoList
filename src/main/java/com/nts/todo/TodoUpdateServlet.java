@@ -28,8 +28,7 @@ public class TodoUpdateServlet extends HttpServlet {
 		response.setContentType("text/plain;charset=UTF-8");
 
 		try {
-			ServletContext servletContext = this.getServletContext();
-			TodoDao todoDao = (TodoDao) servletContext.getAttribute("dao");
+			TodoDao todoDao = TodoDao.getInstance();
 			TodoDto todo = getTodo(request);
 
 			todoDao.updateTodo(todo);
