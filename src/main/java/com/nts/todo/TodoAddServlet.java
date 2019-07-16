@@ -28,12 +28,11 @@ public class TodoAddServlet extends HttpServlet {
 		response.setContentType("text/plain;charset=UTF-8");
 
 		try {
-			throw new SQLException();
-//			TodoDao todoDao = TodoDao.getInstance();
-//			TodoDto todo = getTodo(request);
-//			todoDao.addTodo(todo);
-//			
-//			response.sendRedirect("./main");
+			TodoDao todoDao = TodoDao.getInstance();
+			TodoDto todo = getTodo(request);
+			todoDao.addTodo(todo);
+			
+			response.sendRedirect("./main");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("insertFailed", true);
