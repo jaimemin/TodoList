@@ -13,7 +13,7 @@ public class DaoServletContextListener implements ServletContextListener {
 		ServletContext context = event.getServletContext();
 
 		try {
-			String driver = ((ServletContext) event).getInitParameter("jdbcDriver");
+			String driver = context.getInitParameter("jdbcDriver");
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
