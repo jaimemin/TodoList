@@ -65,7 +65,7 @@ public class TodoDao {
 		Timestamp time = resultSet.getTimestamp(2);
 		// time이 null일 경우 바인딩을 안 시킨다.
 		if (time != null) {
-			todo.setRegisteredDate(time);
+			todo.setRegisteredDate(time.toLocalDateTime());
 		}
 		todo.setName(resultSet.getString(3));
 		todo.setSequence(resultSet.getInt(4));
