@@ -36,8 +36,8 @@ public class TodoDto {
 		return registeredDate.toLocalDate();
 	}
 
-	public void setRegisteredDate(Timestamp registeredDate) {
-		this.registeredDate = registeredDate.toLocalDateTime();
+	public void setRegisteredDate(LocalDateTime registeredDate) {
+		this.registeredDate = registeredDate;
 	}
 
 	public int getSequence() {
