@@ -22,17 +22,23 @@ public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		this.doGet(request, response);
+	}
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, CustomException {
 		try {
 			TodoDao todoDao = TodoDao.getInstance();
-			
+
 			List<TodoDto> todoList = new ArrayList<>();
 			List<TodoDto> doingList = new ArrayList<>();
 			List<TodoDto> doneList = new ArrayList<>();
-			
-			for(TodoDto todo : todoDao.getTodos()) {
-				switch(todo.getType()) {
+
+			for (TodoDto todo : todoDao.getTodos()) {
+				switch (todo.getType()) {
 				case "TODO":
 					todoList.add(todo);
 					break;
@@ -44,7 +50,7 @@ public class MainServlet extends HttpServlet {
 					break;
 				}
 			}
-			
+
 			request.setAttribute("todoList", todoList);
 			request.setAttribute("doingList", doingList);
 			request.setAttribute("doneList", doneList);
