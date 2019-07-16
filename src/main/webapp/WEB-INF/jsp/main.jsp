@@ -79,6 +79,13 @@
 			</ul>
 		</div>
 	</section>
+	<c:choose>
+		<c:when test="${insertFailed}">
+			<script>
+	    		alert("등록에 실패했습니다!");
+	    	</script>
+		</c:when>
+	</c:choose>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
