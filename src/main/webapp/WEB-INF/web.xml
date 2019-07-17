@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<listener>
+		<listener-class>
+			com.nts.todo.listener.DaoServletContextListener
+		</listener-class>
+	</listener>
+	
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/jsp/error/error403.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/jsp/error/error405.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.RuntimeException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.IllegalStateException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.IllegalArgumentException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.sql.SQLException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.io.IOException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<context-param>
+		<param-name>jdbcDriver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>main</welcome-file>
+	</welcome-file-list>
+
+</web-app>
