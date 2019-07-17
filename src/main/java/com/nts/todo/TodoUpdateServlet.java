@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import com.nts.todo.dto.TodoDto;
 @WebServlet("/todo-update")
 public class TodoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final ArrayList<String> TYPE = new ArrayList<>(Arrays.asList("TODO", "DOING"));
+	private static final List<String> TYPE = new ArrayList<>(Arrays.asList("TODO", "DOING"));
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,8 +35,7 @@ public class TodoUpdateServlet extends HttpServlet {
 			todoDao.updateTodo(todo);
 		} catch (SQLException | IllegalArgumentException e) {
 			e.printStackTrace();
-			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.\n" 
-					+ e.getMessage());
+			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.\n" + e.getMessage());
 		}
 	}
 
