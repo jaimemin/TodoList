@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nts.exception.CustomException;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
@@ -29,7 +28,7 @@ public class MainServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, CustomException {
+			throws ServletException, IOException {
 		try {
 			TodoDao todoDao = TodoDao.getInstance();
 
@@ -59,7 +58,8 @@ public class MainServlet extends HttpServlet {
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new CustomException("데이터베이스에서 데이터를 불러오는데 문제가 발생했습니다.");
+			
+			throw new RuntimeException("데이터베이스에서 데이터를 불러오는데 실패했습니다.");
 		}
 	}
 

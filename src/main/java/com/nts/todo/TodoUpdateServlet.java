@@ -14,18 +14,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nts.exception.CustomException;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
 @WebServlet("/todo-update")
 public class TodoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final List<String> TYPE = new ArrayList<>(Arrays.asList("TODO", "DOING"));
+	private static final List<String> TYPE = Arrays.asList("TODO", "DOING");
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, CustomException {
+			throws ServletException, IOException {
 		response.setContentType("text/plain;charset=UTF-8");
 
 		try {
@@ -35,7 +34,9 @@ public class TodoUpdateServlet extends HttpServlet {
 			todoDao.updateTodo(todo);
 		} catch (SQLException | IllegalArgumentException e) {
 			e.printStackTrace();
-			throw new CustomException("업데이트 하는 과정에서 예외가 발생했습니다.\n" + e.getMessage());
+			
+			// error has occured from server side
+			response.setStatus(500);
 		}
 	}
 

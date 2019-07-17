@@ -27,12 +27,22 @@
 	</error-page>
 	
 	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
 		<exception-type>java.lang.RuntimeException</exception-type>
 		<location>/WEB-INF/jsp/error/error.jsp</location>
 	</error-page>
 	
 	<error-page>
-		<exception-type>com.nts.todo.exception.SqlException</exception-type>
+		<exception-type>java.lang.IllegalStateException</exception-type>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.IllegalArgumentException</exception-type>
 		<location>/WEB-INF/jsp/error/error.jsp</location>
 	</error-page>
 	

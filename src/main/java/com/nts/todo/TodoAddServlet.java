@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nts.exception.CustomException;
 import com.nts.todo.dao.TodoDao;
 import com.nts.todo.dto.TodoDto;
 
