@@ -33,7 +33,7 @@ public class TodoDto {
 	}
 
 	public LocalDate getFormattedDate() {
-		return registeredDate.toLocalDate();
+		return registeredDate == null ? null : registeredDate.toLocalDate();
 	}
 
 	public void setRegisteredDate(LocalDateTime registeredDate) {
