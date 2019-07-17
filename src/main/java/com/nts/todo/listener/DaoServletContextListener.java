@@ -17,7 +17,7 @@ public class DaoServletContextListener implements ServletContextListener {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			throw new RuntimeException("JDBC 드라이버가 존재하지 않습니다.", e);
+			throw new IllegalStateException("JDBC 드라이버가 존재하지 않습니다.", e);
 		}
 
 	}

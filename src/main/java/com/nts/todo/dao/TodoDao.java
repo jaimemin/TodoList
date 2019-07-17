@@ -15,16 +15,13 @@ public class TodoDao {
 	private static String DATABASE_URL = "jdbc:mysql://10.113.116.52:13306/user11";
 	private static String DATABASE_ID = "user11";
 	private static String DATABASE_PASSWORD = "user11";
-	private static TodoDao instance;
+	private static TodoDao INSTANCE = new TodoDao();
 
 	private TodoDao() {
 	}
 
 	public static TodoDao getInstance() {
-		if (instance == null) {
-			instance = new TodoDao();
-		}
-		return instance;
+		return INSTANCE;
 	}
 
 	public int addTodo(TodoDto todo) throws SQLException {
