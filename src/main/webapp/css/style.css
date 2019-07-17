@@ -1,0 +1,114 @@
+body {
+	margin-right: 30px;
+}
+
+.headerSection {
+	position: relative;
+	width: 100%;
+	height: 100px;
+}
+
+.headerSection a {
+	text-decoration: none; /*밑줄을 없애준다.*/
+}
+
+.rotatedHeadTitle {
+	position: absolute;
+	transform: rotate(330deg);
+	font-size: 20px;
+	color: #00008B;
+	top: 40px;
+}
+
+.registerNewTodo {
+	float: right;
+	background: skyblue;
+	padding: 5px 20px 5px 20px;
+	margin-top: 40px;
+	color: white;
+}
+
+.listSection {
+	position: relative;
+	width: 90%;
+	float: right;
+	display: flex;
+	flex: 1;
+}
+
+.list {
+	width: 33.3%;
+	overflow: hidden;
+}
+
+.status {
+	width: 100%;
+	height: 20px;
+	font-size: 15px;
+	color: white;
+	margin: 10px;
+	padding: 15px;
+	background: #00008B;
+}
+
+.registerScheduleBody {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+
+.previousPage {
+	float: left;
+	display: inline-block;
+	margin: 10px;
+	border: 1px solid gray;
+}
+
+.previousPage a {
+	text-decoration: none;
+	margin: 10px;
+	line-height: 35px;
+}
+
+.buttons {
+	float: right;
+}
+
+.buttons > input {
+	width: 100px;
+	height: 40px;
+	color: white;
+	margin: 10px;
+	background: skyblue;
+}
+
+ul {
+	list-style: none;
+	padding: 0 15px;
+}
+
+.todoCard {
+	padding: 20px 10px 20px 10px;
+	margin: 10px 5px 10px 5px;
+	background-color: skyblue;
+	border: 5px solid black;
+}
+
+.todoTitle {
+	font-size: 20px;
+	font-weight: bolder;
+	margin-bottom: 5px;
+}
+
+.todoContent {
+	display: flex;
+	height: 40px;
+}
+
+.todoBody {
+	width: 90%;
+}
+
+button {
+	width: 10%;
+}
